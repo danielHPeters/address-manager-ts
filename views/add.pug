@@ -25,7 +25,17 @@ block content
       .input-field
         label(for='homeCityZip') Home City ZIP:
         input(type='text' id='homeCityZip' name='homeCityZip')
-      a.btn-floating.btn-large.waves-effect.waves-light.blue(href='/')
+      //a.btn-floating.btn-large.waves-effect.waves-light.blue(href='/')
         i.material-icons.right arrow_back
-      button.btn-floating.btn-large.waves-effect.waves-light(type='submit')
+      //button.btn-floating.btn-large.waves-effect.waves-light(type='submit')
         i.material-icons.right send
+      .fixed-action-btn
+        a.btn-floating.btn-large.red
+          i.material-icons mode_edit
+        ul
+          li
+            button.btn-floating.green(type='submit')
+              i.material-icons send
+          li
+            a.btn-floating.blue(href='/')
+              i.material-icons arrow_back

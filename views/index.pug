@@ -4,4 +4,37 @@ block content
   .container
     h1= title
     p Welcome to #{title}
-    a(href='/add') Add Person
+    .fixed-action-btn
+      a.btn-floating.btn-large.red
+        i.material-icons mode_edit
+      ul
+        li
+          a.btn-floating.green(href='/add')
+           i.material-icons add
+    table
+      tr
+        th First name
+        th Last Name
+        th Email
+        th Birth Date
+        th City
+        th ZIP
+        th Home City
+        th(colspan='2') Home City Zip
+      each person in people
+        tr
+          td= person.lastName
+          td= person.firstName
+          td= person.email
+          td= person.birthDate
+          td= person.city
+          td= person.zip
+          td= person.homeCity
+          td= person.homeCityZip
+          td
+            form(method='post')
+              input(type='hidden')
+              button.btn-floating.btn.waves-effect.waves-light.red
+                i.material-icons.right delete_forever
+
+
