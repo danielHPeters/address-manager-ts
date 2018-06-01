@@ -1,4 +1,4 @@
-# five-tier-architecture
+# address-manager-ts
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/danielHPeters/five-tier-architecture.svg?columns=all)](https://waffle.io/danielHPeters/five-tier-architecture) [![dependencies Status](https://david-dm.org/danielHpeters/five-tier-architecture/status.svg)](https://david-dm.org/danielHpeters/five-tier-architecture) [![Build Status](https://travis-ci.org/danielHPeters/five-tier-architecture.svg?branch=master)](https://travis-ci.org/danielHPeters/five-tier-architecture)  
 School project implementing 5 tier architecture.
 
