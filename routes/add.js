@@ -1,12 +1,11 @@
 'use strict'
+
 const express = require('express')
 const router = express.Router()
 const conn = require('./../lib/connection')
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('add', {title: 'Add Person'})
-})
+router.get('/', (req, res, next) => res.render('add', {title: 'Add Person'}))
 
 router.post('/', (req, res, next) => {
   let postData = req.body
