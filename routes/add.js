@@ -21,8 +21,8 @@ router.post('/', (req, res) => {
   })
   res.header('content-type', 'application/json')
   if (!error) {
-    conn.query(insertAddressSql, [postData.city, postData.zip], data => {
-      conn.query(insertHomeTownSql, [postData.homeCity, postData.homeCityZip], data => {
+    conn.query(insertAddressSql, [postData.city, postData.zip], () => {
+      conn.query(insertHomeTownSql, [postData.homeCity, postData.homeCityZip], () => {
         conn.query(
           insertUserSql,
           [postData.firstName, postData.lastName, postData.email, postData.birthDate, postData.zip, postData.homeCityZip],
