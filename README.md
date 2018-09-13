@@ -1,4 +1,9 @@
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/danielHPeters/address-manager-ts.svg?columns=all)](https://waffle.io/danielHPeters/address-manager-ts) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/danielHPeters/address-manager-ts.svg?branch=master)](https://travis-ci.org/danielHPeters/address-manager-ts) [![Coverage Status](https://coveralls.io/repos/github/danielHPeters/address-manager-ts/badge.svg?branch=master)](https://coveralls.io/github/danielHPeters/address-manager-ts?branch=master) [![dependencies Status](https://david-dm.org/danielHpeters/address-manager-ts/status.svg)](https://david-dm.org/danielHpeters/address-manager-ts)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/danielHPeters/address-manager-ts.svg?columns=all)](https://waffle.io/danielHPeters/address-manager-ts)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) 
+[![Build Status](https://travis-ci.org/danielHPeters/address-manager-ts.svg?branch=master)](https://travis-ci.org/danielHPeters/address-manager-ts)
+[![Coverage Status](https://coveralls.io/repos/github/danielHPeters/address-manager-ts/badge.svg?branch=master)](https://coveralls.io/github/danielHPeters/address-manager-ts?branch=master)
+[![dependencies Status](https://david-dm.org/danielHpeters/address-manager-ts/status.svg)](https://david-dm.org/danielHpeters/address-manager-ts)
+[![CodeFactor](https://www.codefactor.io/repository/github/danielhpeters/address-manager-ts/badge/master)](https://www.codefactor.io/repository/github/danielhpeters/address-manager-ts/overview/master)
 # address-manager-ts
 School project implementing 5 tier architecture.
 

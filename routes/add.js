@@ -5,9 +5,9 @@ const router = express.Router()
 const conn = require('./../lib/connection')
 
 /* GET home page. */
-router.get('/', (req, res, next) => res.render('add', {title: 'Add Person'}))
+router.get('/', (req, res) => res.render('add', { title: 'Add Person' }))
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   let postData = req.body
   let insertAddressSql = 'INSERT INTO address (city, zip) VALUES (?, ?)'
   let insertHomeTownSql = 'INSERT INTO address (city, zip) VALUES (?, ?)'
@@ -26,8 +26,8 @@ router.post('/', (req, res, next) => {
         conn.query(
           insertUserSql,
           [postData.firstName, postData.lastName, postData.email, postData.birthDate, postData.zip, postData.homeCityZip],
-          data => {
-            res.send({success: true})
+          () => {
+            res.send({ success: true })
           }
         )
       })
