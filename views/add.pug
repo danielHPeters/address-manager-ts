@@ -2,7 +2,7 @@ extends layout
 
 block content
   .container
-    form(id='personSubmit' method='post' action='/add')
+    form#personSubmit(method='post' action='/add')
       .input-field
         label(for='firstName') First Name:
         input(type='text' id='firstName' name='firstName')

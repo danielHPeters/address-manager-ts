@@ -22,7 +22,7 @@ app.set('view engine', 'pug')
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error', {title: 'Error 404', error: err})
+  res.render('error', { title: 'Error 404', error: err })
 })
 
 module.exports = app

@@ -10,15 +10,25 @@ const tsProject = ts.createProject('tsconfig.json')
 const tsLint = require('gulp-tslint')
 
 // Define sources, destination and config file locations here
-const configuration = {
+const config = {
   ts: {
     source: 'src/**/*ts',
-    tests: 'test/**/*ts'
+    tests: 'test/**/*ts',
+    dest: 'dist'
   },
   js: {
     coverage: 'coverage',
     bundledSource: 'src/entry.js',
     destination: 'public/js'
+  },
+  tasks: {
+    buildClient: 'build:client',
+    buildServer: 'build:server',
+    coveralls: 'coveralls',
+    def: 'default',
+    lint: 'lint',
+    test: 'test',
+    watch: 'watch'
   }
 }
 
@@ -29,28 +39,31 @@ const configuration = {
  * After that, the js wil be minified.
  * Source maps are generated to allow source debugging in the consoles of most browsers.
  */
-gulp.task('build:client', () => {
-  return gulp.src(configuration.js.bundledSource, { allowEmpty: true })
+gulp.task(
+  config.tasks.buildClient,
+  () => gulp.src(config.js.bundledSource, { allowEmpty: true })
     .pipe(gulpWebpack(webpackConfig, webpack))
-    .pipe(gulp.dest(configuration.js.destination))
-})
+    .pipe(gulp.dest(config.js.destination))
+)
 
 /**
  * Generates the server JavaScript files from TypeScript and puts them in the dist folder.
  */
-gulp.task('build:server', () => {
-  return tsProject.src()
+gulp.task(
+  config.tasks.buildServer,
+  () => tsProject.src()
     .pipe(tsProject())
     .js
-    .pipe(gulp.dest('dist'))
-})
+    .pipe(gulp.dest(config.ts.dest))
+)
 
 /**
  * Lint all typescript source files.
  * The standard used is standard.js as defined in the 'tslint.json' file.
  */
-gulp.task('lint', () =>
-  gulp.src(configuration.ts.source)
+gulp.task(
+  config.tasks.lint,
+  () => gulp.src(config.ts.source)
     .pipe(tsLint({
       formatter: 'verbose'
     }))
@@ -60,7 +73,7 @@ gulp.task('lint', () =>
 /**
  * Run npm test task which runs mocha with nyc coverage reporter.
  */
-gulp.task('test', (cb) => {
+gulp.task(config.tasks.test, (cb) => {
   const npm = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['test'], { shell: true, stdio: 'inherit' })
   npm.on('close', code => {
     console.log('test exited with code ' + code)
@@ -71,7 +84,7 @@ gulp.task('test', (cb) => {
 /**
  * Send coverage information to coveralls.io.
  */
-gulp.task('coveralls', (cb) => {
+gulp.task(config.tasks.coveralls, (cb) => {
   const npm = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['run', 'coveralls'], {
     shell: true,
     stdio: 'inherit'
@@ -85,13 +98,14 @@ gulp.task('coveralls', (cb) => {
 /**
  * Watch changes in ts files.
  */
-gulp.task('watch', () => {
-  gulp.watch(configuration.ts.source, ['build:client', 'build:server'])
+gulp.task(config.tasks.watch, () => {
+  gulp.watch(config.ts.source, [config.tasks.buildServer, config.tasks.buildClient])
 })
 
 /**
  * Default task to perform all previously defined tasks.
  */
-gulp.task('default', gulp.series(['lint', 'test', 'build:server', 'build:client'], done => {
-  done()
-}))
+gulp.task(
+  config.tasks.def,
+  gulp.series([config.tasks.lint, config.tasks.test, config.tasks.buildServer, config.tasks.buildClient], done => done())
+)
